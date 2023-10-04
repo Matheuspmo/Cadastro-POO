@@ -20,14 +20,19 @@ type
     DBGrid2: TDBGrid;
     DsDetail: TDataSource;
     Panel2: TPanel;
-    SpeedButton1: TSpeedButton;
-    SpeedButton2: TSpeedButton;
-    SpeedButton3: TSpeedButton;
-    SpeedButton4: TSpeedButton;
-    procedure SpeedButton1Click(Sender: TObject);
-    procedure SpeedButton2Click(Sender: TObject);
-    procedure SpeedButton3Click(Sender: TObject);
-    procedure SpeedButton4Click(Sender: TObject);
+    BtnCheck: TSpeedButton;
+    BtnUncheck: TSpeedButton;
+    BtnInvert: TSpeedButton;
+    BtnDefault: TSpeedButton;
+    imgpermissao: TImageList;
+    procedure BtnCheckClick(Sender: TObject);
+    procedure BtnUncheckClick(Sender: TObject);
+    procedure BtnInvertClick(Sender: TObject);
+    procedure BtnDefaultClick(Sender: TObject);
+    procedure DBGrid2DrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure DBGrid2CellClick(Column: TColumn);
+    procedure ac_SalvarUpdate(Sender: TObject);
   private
     { Private declarations }
     FAcoes: TCustomActionList;
@@ -49,6 +54,15 @@ uses
 {$R *.dfm}
 
 { TFrmPerfil }
+
+procedure TFrmPerfil.ac_SalvarUpdate(Sender: TObject);
+begin
+  inherited;
+  BtnDefault.Enabled := TAction(Sender).Enabled;
+  BtnCheck.Enabled := TAction(Sender).Enabled;
+  BtnUncheck.Enabled := TAction(Sender).Enabled;
+  BtnInvert.Enabled := TAction(Sender).Enabled;
+end;
 
 procedure TFrmPerfil.ChangePermissao(TipoPermissao: TTipoPermissao);
 begin
@@ -83,6 +97,36 @@ begin
   FAcoes := ActionList;
 end;
 
+procedure TFrmPerfil.DBGrid2CellClick(Column: TColumn);
+begin
+  inherited;
+  if Column.FieldName = 'PERMISSAO' then
+  begin
+   DsDetail.DataSet.Edit;
+   if Column.Field.AsString = 'V' then
+    Column.Field.AsString := 'F'
+   else
+    Column.Field.AsString := 'V';
+
+   DsDetail.DataSet.Post;
+  end;
+end;
+
+procedure TFrmPerfil.DBGrid2DrawColumnCell(Sender: TObject; const Rect: TRect;
+  DataCol: Integer; Column: TColumn; State: TGridDrawState);
+begin
+  inherited;
+  if Column.FieldName = 'PERMISSAO' then
+  begin
+   DBGrid2.Canvas.FillRect(Rect);
+   imgpermissao.Draw(DBGrid2.Canvas,Rect.Left+10,Rect.Top,-1);
+   if Column.Field.AsString = 'V' then
+    imgpermissao.Draw(DBGrid2.Canvas,Rect.Left+10,Rect.Top,1)
+   else
+    imgpermissao.Draw(DBGrid2.Canvas,Rect.Left+10,Rect.Top,0);
+  end;
+end;
+
 procedure TFrmPerfil.LoadDefault;
 var
   I: Integer;
@@ -102,25 +146,25 @@ begin
 
 end;
 
-procedure TFrmPerfil.SpeedButton1Click(Sender: TObject);
+procedure TFrmPerfil.BtnCheckClick(Sender: TObject);
 begin
   inherited;
   ChangePermissao(tpCheck);
 end;
 
-procedure TFrmPerfil.SpeedButton2Click(Sender: TObject);
+procedure TFrmPerfil.BtnUncheckClick(Sender: TObject);
 begin
   inherited;
   ChangePermissao(tpUncheck);
 end;
 
-procedure TFrmPerfil.SpeedButton3Click(Sender: TObject);
+procedure TFrmPerfil.BtnInvertClick(Sender: TObject);
 begin
   inherited;
    ChangePermissao(tpInvert);
 end;
 
-procedure TFrmPerfil.SpeedButton4Click(Sender: TObject);
+procedure TFrmPerfil.BtnDefaultClick(Sender: TObject);
 begin
   inherited;
   LoadDefault;

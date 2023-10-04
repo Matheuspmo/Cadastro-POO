@@ -3,7 +3,7 @@ object FrmModelo: TFrmModelo
   Top = 0
   Caption = 'FrmModelo'
   ClientHeight = 442
-  ClientWidth = 822
+  ClientWidth = 879
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,7 +16,7 @@ object FrmModelo: TFrmModelo
   object ToolBar1: TToolBar
     Left = 0
     Top = 0
-    Width = 822
+    Width = 879
     Height = 49
     ButtonHeight = 40
     ButtonWidth = 40
@@ -85,10 +85,13 @@ object FrmModelo: TFrmModelo
   object PageControl1: TPageControl
     Left = 0
     Top = 49
-    Width = 822
+    Width = 879
     Height = 393
+    ActivePage = tbConsulta
     Align = alClient
     TabOrder = 1
+    ExplicitWidth = 818
+    ExplicitHeight = 392
     object tbCadastro: TTabSheet
       Caption = 'tbCadastro'
       TabVisible = False
@@ -100,10 +103,11 @@ object FrmModelo: TFrmModelo
       object Panel1: TPanel
         Left = 0
         Top = 0
-        Width = 814
+        Width = 871
         Height = 73
         Align = alTop
         TabOrder = 0
+        ExplicitWidth = 814
         object Label1: TLabel
           Left = 5
           Top = 3
@@ -120,7 +124,7 @@ object FrmModelo: TFrmModelo
         end
         object Label3: TLabel
           Left = 744
-          Top = 28
+          Top = 44
           Width = 79
           Height = 14
           Cursor = crHandPoint
@@ -132,6 +136,22 @@ object FrmModelo: TFrmModelo
           Font.Style = []
           ParentFont = False
           OnClick = Label3Click
+        end
+        object Label12: TLabel
+          Left = 744
+          Top = 12
+          Width = 85
+          Height = 14
+          Cursor = crHandPoint
+          Caption = 'Proximo Pacote'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlue
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          Visible = False
+          OnClick = Label12Click
         end
         object cbxField: TComboBox
           Left = 5
@@ -162,9 +182,10 @@ object FrmModelo: TFrmModelo
       object DBGrid1: TDBGrid
         Left = 0
         Top = 73
-        Width = 814
+        Width = 871
         Height = 310
         Align = alClient
+        DataSource = Ds
         TabOrder = 1
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
@@ -1166,6 +1187,6 @@ object FrmModelo: TFrmModelo
   end
   object Ds: TDataSource
     Left = 764
-    Top = 65531
+    Top = 3
   end
 end

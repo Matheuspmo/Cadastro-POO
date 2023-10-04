@@ -1,16 +1,10 @@
 inherited FrmCliente: TFrmCliente
   Caption = 'Cadastro de Clientes'
   ClientHeight = 532
-  ExplicitWidth = 830
   ExplicitHeight = 590
   TextHeight = 15
-  inherited ToolBar1: TToolBar
-    ExplicitWidth = 814
-  end
   inherited PageControl1: TPageControl
     Height = 483
-    ActivePage = tbCadastro
-    ExplicitWidth = 814
     ExplicitHeight = 482
     inherited tbCadastro: TTabSheet
       ExplicitHeight = 473
@@ -154,8 +148,12 @@ inherited FrmCliente: TFrmCliente
     end
     inherited tbConsulta: TTabSheet
       ExplicitHeight = 473
+      inherited Panel1: TPanel
+        ExplicitWidth = 810
+      end
       inherited DBGrid1: TDBGrid
         Height = 400
+        DataSource = Ds
       end
     end
   end

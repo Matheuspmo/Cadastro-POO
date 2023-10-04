@@ -52,6 +52,7 @@ type
     Label2: TLabel;
     Ds: TDataSource;
     Label3: TLabel;
+    Label12: TLabel;
     procedure ac_incluirExecute(Sender: TObject);
     procedure ac_excluirExecute(Sender: TObject);
     procedure ac_alterarExecute(Sender: TObject);
@@ -65,8 +66,11 @@ type
     procedure FormCreate(Sender: TObject);
     procedure BtnPesquisarClick(Sender: TObject);
     procedure Label3Click(Sender: TObject);
+    procedure Label12Click(Sender: TObject);
   private
     { Private declarations }
+    ListaField: Array of Integer;
+    Pacotes: Integer;
   public
     { Public declarations }
   end;
@@ -140,6 +144,7 @@ procedure TFrmModelo.ac_SalvarUpdate(Sender: TObject);
 begin
  TAction(Sender).Enabled := Ds.DataSet.State in [dsInsert, dsEdit];//type casting para poder utilizar a propriedade Enabled
  Label3.Visible          := Ds.DataSet.Filtered;
+ Label12.Visible         := Pacotes > 0;
 end;
 
 procedure TFrmModelo.ac_visualizarExecute(Sender: TObject);
@@ -155,23 +160,34 @@ begin
  if (cbxField.Text <> EmptyStr) and
     (edtvalor.Text <> EmptyStr) then
  begin
-  Ds.DataSet.Filter   := 'Upper(' + cbxField.Text + ') like ' + QuotedStr(UpperCase(edtvalor.Text) + '%');
+  Ds.DataSet.Filter   := 'Upper(' + Ds.DataSet.Fields[ListaField[cbxField.ItemIndex]].FieldName + ') like ' + QuotedStr(UpperCase(edtvalor.Text) + '%');
   Ds.DataSet.Filtered := True;
   if not Ds.DataSet.Active then
    Ds.DataSet.Open;
+   Pacotes := 1;
  end;
 
 end;
 
 procedure TFrmModelo.FormCreate(Sender: TObject);
 var
- I: Integer;
+ I, J: Integer;
 begin
  for I := 0 to Pred(Ds.DataSet.FieldCount) do //vinculando o nomes dos campos da tabela vinculada ao combobox
  begin
   if Ds.DataSet.Fields[I].DataType in [ftString, ftWideString, ftFixedChar] then
-   cbxField.Items.Add(Ds.DataSet.Fields[I].FieldName);
+  begin
+   J := cbxField.Items.Add(Ds.DataSet.Fields[I].DisplayLabel);
+   SetLength(ListaField, High(ListaField)+2);
+   ListaField[J] := I
+  end;
  end;
+ Ds.DataSet.Open;
+end;
+
+procedure TFrmModelo.Label12Click(Sender: TObject);
+begin
+ Pacotes := TClientDataSet(Ds.DataSet).GetNextPacket;
 end;
 
 procedure TFrmModelo.Label3Click(Sender: TObject);

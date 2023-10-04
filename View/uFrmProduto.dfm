@@ -1,9 +1,15 @@
 inherited FrmProduto: TFrmProduto
   Caption = 'Cadastro de Produto'
+  ClientWidth = 861
+  ExplicitWidth = 873
   TextHeight = 15
+  inherited ToolBar1: TToolBar
+    Width = 861
+  end
   inherited PageControl1: TPageControl
-    ActivePage = tbCadastro
+    Width = 861
     inherited tbCadastro: TTabSheet
+      ExplicitWidth = 853
       object Label4: TLabel
         Left = 3
         Top = 3
@@ -56,9 +62,18 @@ inherited FrmProduto: TFrmProduto
         TabOrder = 2
       end
     end
+    inherited tbConsulta: TTabSheet
+      ExplicitWidth = 853
+      inherited Panel1: TPanel
+        Width = 853
+        ExplicitWidth = 871
+      end
+      inherited DBGrid1: TDBGrid
+        Width = 853
+      end
+    end
   end
   inherited Ds: TDataSource
     DataSet = DM.cdsProduto
-    Top = 3
   end
 end
