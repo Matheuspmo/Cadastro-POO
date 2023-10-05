@@ -68,6 +68,7 @@ type
   DsVenda_Itens: TDataSource;
   cdsVendassdsItens: TDataSetField;
   cdsItens: TClientDataSet;
+    cdsUsuarioPerfil: TStringField;
     procedure DataModuleCreate(Sender: TObject);
  private
   { Private declarations }

@@ -21,6 +21,8 @@ type
     Label7: TLabel;
     DBEdit4: TDBEdit;
     DBCheckBox1: TDBCheckBox;
+    Label8: TLabel;
+    DBLookupComboBox1: TDBLookupComboBox;
  private
   { Private declarations }
  public

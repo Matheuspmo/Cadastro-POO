@@ -8,7 +8,8 @@ uses
   uFrmCliente in 'View\uFrmCliente.pas' {FrmCliente},
   uFrmProduto in 'View\uFrmProduto.pas' {FrmProduto},
   uFrmUsuario in 'View\uFrmUsuario.pas' {FrmUsuario},
-  uFrmPerfil in 'View\uFrmPerfil.pas' {FrmPerfil};
+  uFrmPerfil in 'View\uFrmPerfil.pas' {FrmPerfil},
+  uUsuario in 'Model\uUsuario.pas';
 
 {$R *.res}
 

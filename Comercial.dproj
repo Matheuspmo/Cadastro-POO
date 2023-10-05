@@ -132,6 +132,7 @@
             <Form>FrmPerfil</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="Model\uUsuario.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

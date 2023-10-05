@@ -136,6 +136,16 @@ object DM: TDM
       FixedChar = True
       Size = 1
     end
+    object cdsUsuarioPerfil: TStringField
+      FieldKind = fkLookup
+      FieldName = 'Perfil'
+      LookupDataSet = cdsPerfil
+      LookupKeyFields = 'PERFILID'
+      LookupResultField = 'NOME'
+      KeyFields = 'PERFILID'
+      Size = 50
+      Lookup = True
+    end
   end
   object dspUsuario: TDataSetProvider
     DataSet = sdsUsuario
