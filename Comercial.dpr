@@ -9,7 +9,8 @@ uses
   uFrmProduto in 'View\uFrmProduto.pas' {FrmProduto},
   uFrmUsuario in 'View\uFrmUsuario.pas' {FrmUsuario},
   uFrmPerfil in 'View\uFrmPerfil.pas' {FrmPerfil},
-  uUsuario in 'Model\uUsuario.pas';
+  uUsuario in 'Model\uUsuario.pas',
+  uFrmLogin in 'View\uFrmLogin.pas' {FrmLogin};
 
 {$R *.res}
 

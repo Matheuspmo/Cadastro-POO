@@ -39,6 +39,8 @@ type
     procedure ac_Cadastro_clienteExecute(Sender: TObject);
     procedure ac_Cadastro_produtoExecute(Sender: TObject);
     procedure ac_Seguranca_perfilExecute(Sender: TObject);
+    procedure ac_Cadastro_usuarioExecute(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -52,7 +54,7 @@ implementation
 
 {$R *.dfm}
 
-uses uFrmCliente, uFrmProduto, uFrmPerfil;
+uses uFrmCliente, uFrmProduto, uFrmPerfil, uFrmUsuario, uFrmLogin;
 
 procedure TFrmPrincipal.ac_Cadastro_clienteExecute(Sender: TObject);
 begin
@@ -68,11 +70,30 @@ begin
  FreeAndNil(FrmProduto);
 end;
 
+procedure TFrmPrincipal.ac_Cadastro_usuarioExecute(Sender: TObject);
+begin
+ FrmUsuario := TFrmUsuario.Create(Self);
+ FrmUsuario.ShowModal;
+ FreeAndNil(FrmUsuario);
+end;
+
 procedure TFrmPrincipal.ac_Seguranca_perfilExecute(Sender: TObject);
 begin
  FrmPerfil := TFrmPerfil.Create(Self, Acoes);
  FrmPerfil.ShowModal;
  FreeAndNil(Self);
+end;
+
+procedure TFrmPrincipal.FormCreate(Sender: TObject);
+begin
+ FrmLogin := TFrmLogin.Create(Self);
+ if FrmLogin.ShowModal <> mrOk then
+ begin
+  MessageDlg('Você não se logou corretamente. A aplicação será encerrada!',TMsgDlgType.mtInformation,[mbOK],0);
+  Application.Terminate;
+ end
+ else
+  FreeAndNil(FrmLogin);
 end;
 
 procedure TFrmPrincipal.Personalizar1Click(Sender: TObject);

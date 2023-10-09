@@ -10,6 +10,7 @@ object FrmPrincipal: TFrmPrincipal
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnCreate = FormCreate
   TextHeight = 15
   object ActionMainMenuBar1: TActionMainMenuBar
     Left = 0
@@ -209,6 +210,7 @@ object FrmPrincipal: TFrmPrincipal
       Category = 'Cadastro'
       Caption = 'Usu'#225'rio'
       ImageIndex = 14
+      OnExecute = ac_Cadastro_usuarioExecute
     end
     object ac_Cadastro_sair: TAction
       Category = 'Cadastro'
