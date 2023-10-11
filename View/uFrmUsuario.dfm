@@ -2,7 +2,6 @@ inherited FrmUsuario: TFrmUsuario
   Caption = 'Cadastro de Usu'#225'rio'
   ClientWidth = 818
   ExplicitWidth = 830
-  ExplicitHeight = 499
   TextHeight = 15
   inherited ToolBar1: TToolBar
     Width = 818
@@ -12,7 +11,6 @@ inherited FrmUsuario: TFrmUsuario
     Width = 818
     ActivePage = tbCadastro
     ExplicitWidth = 814
-    ExplicitHeight = 391
     inherited tbCadastro: TTabSheet
       ExplicitWidth = 810
       object Label4: TLabel

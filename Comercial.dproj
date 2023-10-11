@@ -137,6 +137,10 @@
             <Form>FrmLogin</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="View\uFrmChangePassword.pas">
+            <Form>FrmChangePassaword</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

@@ -278,6 +278,12 @@ object FrmPrincipal: TFrmPrincipal
       ImageIndex = 17
       OnExecute = ac_Seguranca_perfilExecute
     end
+    object ac_Seguranca_alterar_senha: TAction
+      Category = 'Seguran'#231'a'
+      Caption = 'Alterar Senha'
+      ImageIndex = 14
+      OnExecute = ac_Seguranca_alterar_senhaExecute
+    end
   end
   object Imagens: TImageList
     Left = 560

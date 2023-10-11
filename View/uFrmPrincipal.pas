@@ -35,12 +35,14 @@ type
     CustomizeDlg1: TCustomizeDlg;
     Personalizar1: TMenuItem;
     XPColorMap1: TXPColorMap;
+    ac_Seguranca_alterar_senha: TAction;
     procedure Personalizar1Click(Sender: TObject);
     procedure ac_Cadastro_clienteExecute(Sender: TObject);
     procedure ac_Cadastro_produtoExecute(Sender: TObject);
     procedure ac_Seguranca_perfilExecute(Sender: TObject);
     procedure ac_Cadastro_usuarioExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure ac_Seguranca_alterar_senhaExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -54,7 +56,7 @@ implementation
 
 {$R *.dfm}
 
-uses uFrmCliente, uFrmProduto, uFrmPerfil, uFrmUsuario, uFrmLogin;
+uses uFrmCliente, uFrmProduto, uFrmPerfil, uFrmUsuario, uFrmLogin, uFrmChangePassword;
 
 procedure TFrmPrincipal.ac_Cadastro_clienteExecute(Sender: TObject);
 begin
@@ -75,6 +77,13 @@ begin
  FrmUsuario := TFrmUsuario.Create(Self);
  FrmUsuario.ShowModal;
  FreeAndNil(FrmUsuario);
+end;
+
+procedure TFrmPrincipal.ac_Seguranca_alterar_senhaExecute(Sender: TObject);
+begin
+ FrmChangePassaword := TFrmChangePassaword.Create(Self);
+ FrmChangePassaword.ShowModal;
+ FreeAndNil(FrmChangePassaword);
 end;
 
 procedure TFrmPrincipal.ac_Seguranca_perfilExecute(Sender: TObject);

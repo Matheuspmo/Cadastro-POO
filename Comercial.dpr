@@ -10,7 +10,8 @@ uses
   uFrmUsuario in 'View\uFrmUsuario.pas' {FrmUsuario},
   uFrmPerfil in 'View\uFrmPerfil.pas' {FrmPerfil},
   uUsuario in 'Model\uUsuario.pas',
-  uFrmLogin in 'View\uFrmLogin.pas' {FrmLogin};
+  uFrmLogin in 'View\uFrmLogin.pas' {FrmLogin},
+  uFrmChangePassword in 'View\uFrmChangePassword.pas' {FrmChangePassaword};
 
 {$R *.res}
 
@@ -20,5 +21,6 @@ begin
   Application.Title := 'Sistema Comercial';
   Application.CreateForm(TFrmPrincipal, FrmPrincipal);
   Application.CreateForm(TDM, DM);
+  Application.CreateForm(TFrmChangePassaword, FrmChangePassaword);
   Application.Run;
 end.

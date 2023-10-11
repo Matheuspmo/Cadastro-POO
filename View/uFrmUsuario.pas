@@ -7,7 +7,7 @@ uses
  System.Classes, Vcl.Graphics,
  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uFrmModelo, Data.DB, System.ImageList,
  Vcl.ImgList, System.Actions, Vcl.ActnList, Vcl.Menus, Vcl.Grids, Vcl.DBGrids,
- Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.ToolWin, uDM,
+ Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.ToolWin,
   Vcl.Mask, Vcl.DBCtrls;
 
 type
@@ -33,6 +33,8 @@ var
  FrmUsuario: TFrmUsuario;
 
 implementation
+
+uses uDM;
 
 {$R *.dfm}
 
